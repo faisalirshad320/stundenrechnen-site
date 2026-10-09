@@ -96,7 +96,8 @@ Rechtsgrundlagen, auf die sich die Inhalte beziehen: Arbeitszeitgesetz (ArbZG §
 - [Datenschutz]({SITE}/datenschutz/)
 """)
 
-    write(".htaccess", """RewriteEngine On
+    write(".htaccess", """DirectoryIndex index.html index.php
+RewriteEngine On
 # HTTP->HTTPS is handled by Cloudways "Enforce HTTPS" (Nginx terminates SSL; Apache always sees HTTP, so an HTTPS-off rule here would loop)
 RewriteCond %{HTTP_HOST} ^stundenrechnen\\.com$ [NC]
 RewriteRule ^(.*)$ https://www.stundenrechnen.com/$1 [R=301,L]

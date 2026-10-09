@@ -1,3 +1,4 @@
+DirectoryIndex index.html index.php
 RewriteEngine On
 # HTTP->HTTPS is handled by Cloudways "Enforce HTTPS" (Nginx terminates SSL; Apache always sees HTTP, so an HTTPS-off rule here would loop)
 RewriteCond %{HTTP_HOST} ^stundenrechnen\.com$ [NC]
