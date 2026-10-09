@@ -2,6 +2,16 @@ SITE = "https://www.stundenrechnen.com"
 NAME = "Stundenrechnen"
 ADSENSE = "ca-pub-8301212931863478"
 YEAR = "2026"
+UPDATED = "10. Oktober 2026"
+SOURCES = {
+    "ftgesetze": ("Feiertagsgesetze der Länder und Einigungsvertrag (Tag der Deutschen Einheit)", "https://www.bmi.bund.de/DE/themen/verfassung/staatliche-symbole/nationale-feiertage/nationale-feiertage-node.html"),
+    "burlg": ("Bundesurlaubsgesetz (BUrlG)", "https://www.gesetze-im-internet.de/burlg/"),
+    "sgb9": ("§ 208 SGB IX – Zusatzurlaub für schwerbehinderte Menschen", "https://www.gesetze-im-internet.de/sgb_9_2018/__208.html"),
+    "tzbfg": ("Teilzeit- und Befristungsgesetz (TzBfG)", "https://www.gesetze-im-internet.de/tzbfg/"),
+    "minijob": ("Minijob-Zentrale – Verdienstgrenze und Abgaben", "https://www.minijob-zentrale.de/"),
+    "milog": ("Mindestlohngesetz und Vierte Mindestlohnanpassungsverordnung", "https://www.gesetze-im-internet.de/milog/"),
+    "arbzg": ("Arbeitszeitgesetz (ArbZG)", "https://www.gesetze-im-internet.de/arbzg/"),
+}
 
 CSS = r"""
 :root{--ink:#152029;--ink-2:#44525E;--line:#D9DEDA;--bg:#EEF1EE;--card:#FFFFFF;--green:#0B6E4F;--green-d:#08573E;--amber:#F2B632;--amber-bg:#FFF6DC;--r:10px;--max:1080px}
@@ -60,6 +70,10 @@ footer strong{display:block;color:var(--ink);margin-bottom:6px}
 .cookie.show{display:flex}.cookie p{margin:0;flex:1 1 320px;max-width:none}.cookie a{color:#fff}.cookie .btn.sm{background:#fff;color:var(--ink)}.cookie .btn.ghost{background:transparent;color:#fff;border-color:#667}
 .copy-ok{color:var(--green-d);font-size:.9rem}
 @media(prefers-reduced-motion:no-preference){.result{transition:background .25s}}
+.chk{display:flex;align-items:center;gap:8px;font-weight:500;color:var(--ink);margin:0}.chk input{width:18px;height:18px}
+.formula{background:var(--card);border:1px dashed #9DB0A5;border-radius:10px;padding:12px 16px;font-weight:600;margin:12px 0}
+.sources{font-size:.9rem;color:var(--ink-2);border-top:1px solid var(--line);margin-top:28px;padding-top:12px}.sources ul{margin:.3em 0;padding-left:1.2em}
+table.sm{font-size:.85rem}table.sm th,table.sm td{padding:7px 6px}ul.cols2{columns:2 260px;column-gap:28px}ul.cols2 li{break-inside:avoid}
 .tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -6px}.ds{display:none}@media(max-width:600px){.row{grid-template-columns:1fr 1fr auto}.calc{padding:14px}.dl{display:none}.ds{display:inline;font-weight:600}table.t th,table.t td{padding:7px 5px}table.t input{padding:6px 4px;font-size:.95rem}table.t td:nth-child(4) input{max-width:64px}table.t td.num{font-size:.85rem}}
 """
 
@@ -85,8 +99,8 @@ function copyRes(id,btn){var t=document.getElementById(id).innerText.replace(/\s
 """
 
 NAV = [("/", "Arbeitszeitrechner"), ("/stundenrechner/", "Stundenrechner"), ("/zeitrechner/", "Zeitrechner"),
-       ("/tagerechner/", "Tagerechner"), ("/ueberstunden-rechner/", "Überstunden"), ("/pausenrechner/", "Pausen"),
-       ("/dezimal-rechner/", "Dezimal"), ("/mwst-rechner/", "MwSt"), ("/stundenlohnrechner/", "Stundenlohn")]
+       ("/tagerechner/", "Tagerechner"), ("/ueberstunden-rechner/", "Überstunden"), ("/arbeitstage-2026/", "Arbeitstage 2026"),
+       ("/feiertage-2026/", "Feiertage"), ("/urlaubsrechner/", "Urlaub"), ("/stundenlohnrechner/", "Stundenlohn")]
 
 LOGO = '<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="#0B6E4F"/><circle cx="16" cy="16" r="11" fill="#fff"/><path d="M16 8v8l5.5 3.5" stroke="#152029" stroke-width="2.4" stroke-linecap="round" fill="none"/><circle cx="16" cy="16" r="1.6" fill="#F2B632"/></svg>'
 
@@ -130,9 +144,16 @@ def page(p, all_pages):
     if faq_ld:
         graph.append(faq_ld)
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False)
+    cand = [q for q in all_pages if q.get("tool") and q["path"] != p["path"]]
+    cand.sort(key=lambda q: 0 if (p.get("group") and q.get("group") == p.get("group")) else 1)
     related = "".join(
         f'<a class="tool" href="{q["path"]}"><strong>{esc(q["short"])}</strong><span>{esc(q["card"])}</span></a>'
-        for q in all_pages if q.get("tool") and q["path"] != p["path"])
+        for q in cand[:9])
+    src_html = ""
+    if p.get("sources"):
+        src_html = '<section class="sources"><strong>Rechtsgrundlagen und Quellen</strong><ul>' + "".join(
+            f'<li><a href="{SOURCES[k][1]}" rel="noopener" target="_blank">{SOURCES[k][0]}</a></li>' for k in p["sources"]) + \
+            f'</ul>Stand: {UPDATED}. Alle Angaben ohne Gewähr; Tarif- und Arbeitsverträge können abweichende Regelungen enthalten.</section>'
     noindex = '<meta name="robots" content="noindex,follow">' if p.get("noindex") else '<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">'
     return f"""<!DOCTYPE html>
 <html lang="de">
@@ -164,12 +185,14 @@ def page(p, all_pages):
 <p class="lead">{p["lead"]}</p>
 {p["body"]}
 {faq_html}
+{src_html}
 <section><h2>Weitere Rechner</h2><div class="tools">{related}</div></section>
 </main>
 <footer><div class="wrap"><div class="cols">
 <div><strong>{NAME}</strong>Kostenlose Online-Rechner für Arbeitszeit, Stunden, Tage und Mehrwertsteuer. Alle Berechnungen laufen direkt im Browser – es werden keine Eingaben gespeichert oder übertragen.</div>
 <div><strong>Rechner</strong><a href="/">Arbeitszeitrechner</a><a href="/stundenrechner/">Stundenrechner</a><a href="/zeitrechner/">Zeitrechner</a><a href="/tagerechner/">Tagerechner</a><a href="/ueberstunden-rechner/">Überstunden-Rechner</a></div>
-<div><strong>Mehr</strong><a href="/pausenrechner/">Pausenrechner</a><a href="/dezimal-rechner/">Dezimal-Rechner</a><a href="/mwst-rechner/">MwSt-Rechner</a><a href="/stundenlohnrechner/">Stundenlohnrechner</a></div>
+<div><strong>Mehr</strong><a href="/pausenrechner/">Pausenrechner</a><a href="/dezimal-rechner/">Dezimal-Rechner</a><a href="/mwst-rechner/">MwSt-Rechner</a><a href="/stundenlohnrechner/">Stundenlohnrechner</a><a href="/altersrechner/">Altersrechner</a></div>
+<div><strong>Arbeit &amp; Urlaub</strong><a href="/arbeitstage-2026/">Arbeitstage 2026</a><a href="/feiertage-2026/">Feiertage 2026</a><a href="/brueckentage-2026/">Brückentage 2026</a><a href="/urlaubsrechner/">Urlaubsrechner</a><a href="/teilzeitrechner/">Teilzeitrechner</a><a href="/minijob-rechner/">Minijob-Rechner</a></div>
 <div><strong>Rechtliches</strong><a href="/ueber-uns/">Über uns</a><a href="/kontakt/">Kontakt</a><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a></div>
 </div><p style="margin:22px 0 0;max-width:none">© {YEAR} {NAME} · Angaben ohne Gewähr. Die Rechner ersetzen keine Rechts- oder Steuerberatung.</p></div></footer>
 <div class="cookie" id="cb" role="dialog" aria-label="Cookie-Hinweis"><p>Wir nutzen Cookies für Werbung (Google AdSense). Mit „Alle akzeptieren“ erlaubst du personalisierte Anzeigen. Details in der <a href="/datenschutz/">Datenschutzerklärung</a>.</p><button class="btn sm ghost" id="cc-min">Nur notwendige</button><button class="btn sm" id="cc-all">Alle akzeptieren</button></div>

@@ -5,10 +5,11 @@ sys.path.insert(0, os.path.dirname(__file__))
 from template import page, SITE, NAME
 from pages_tools import TOOLS
 from pages_legal import LEGAL
+from pages_content import CONTENT
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIST = os.path.join(ROOT, "dist")
-ALL = TOOLS + LEGAL
+ALL = TOOLS + CONTENT + LEGAL
 
 
 def write(rel, content, binary=False):
@@ -36,7 +37,7 @@ def main():
     # sitemap
     today = "2026-10-10"
     urls = "".join(
-        f"<url><loc>{SITE}{p['path']}</loc><lastmod>{today}</lastmod><changefreq>{'weekly' if p.get('tool') else 'yearly'}</changefreq><priority>{'1.0' if p['path']=='/' else ('0.8' if p.get('tool') else '0.3')}</priority></url>"
+        f"<url><loc>{SITE}{p['path']}</loc><lastmod>{today}</lastmod><changefreq>{'weekly' if p.get('tool') or p.get('prio') else 'yearly'}</changefreq><priority>{'1.0' if p['path']=='/' else ('0.8' if p.get('tool') else p.get('prio', '0.3'))}</priority></url>"
         for p in ALL)
     write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n')
 
@@ -70,7 +71,9 @@ Allow: /
 Sitemap: {SITE}/sitemap.xml
 """)
 
-    tools_md = "\n".join(f"- [{p['short']}]({SITE}{p['path']}): {p['card']}" for p in TOOLS)
+    tools_md = "\n".join(f"- [{p['short']}]({SITE}{p['path']}): {p['card']}" for p in TOOLS + [c for c in CONTENT if c.get('tool')])
+    from holidays_de import LAENDER, arbeitstage_jahr
+    laender_md = "\n".join(f"- [Arbeitstage 2026 {n}]({SITE}/arbeitstage-2026-{s}/): {arbeitstage_jahr(2026, c)} Arbeitstage" for c, n, s in LAENDER)
     write("llms.txt", "\ufeff" + f"""# {NAME}
 
 > Kostenlose deutsche Online-Rechner rund um Arbeitszeit und Zeiterfassung: Arbeitszeit mit Pause, Stunden addieren, Zeitspannen, Tage zählen, Überstunden, gesetzliche Pausen, Dezimalstunden, Mehrwertsteuer und Stundenlohn. Alle Berechnungen laufen im Browser; keine Anmeldung.
@@ -88,6 +91,14 @@ Rechtsgrundlagen, auf die sich die Inhalte beziehen: Arbeitszeitgesetz (ArbZG §
 - Umrechnung: Dezimalstunden = Minuten ÷ 60 (7:45 = 7,75). Monatsstunden = Wochenstunden × 4,33.
 - Mindestlohn 2026: 13,90 € brutto/Stunde (2027: 14,60 €). Minijob-Grenze 2026: 603 €/Monat.
 - Mehrwertsteuer: Regelsatz 19 %, ermäßigt 7 %. Netto = Brutto ÷ 1,19.
+- Feiertage 2026: Ostern 5. April (Karfreitag 3.4., Ostermontag 6.4.), Christi Himmelfahrt 14.5., Pfingstmontag 25.5., Fronleichnam 4.6., Buß- und Bettag (Sachsen) 18.11. Tag der Deutschen Einheit, 2. Weihnachtstag, Reformationstag und Allerheiligen fallen 2026 aufs Wochenende.
+- Arbeitstage 2026 (Mo–Fr): 252 in Baden-Württemberg und Bayern; 253 in Hessen, NRW, Rheinland-Pfalz, Saarland, Sachsen, Sachsen-Anhalt; 254 in Berlin, Brandenburg, Bremen, Hamburg, Mecklenburg-Vorpommern, Niedersachsen, Schleswig-Holstein, Thüringen.
+- Urlaub: gesetzlicher Mindesturlaub 24 Werktage (= 20 Arbeitstage bei 5-Tage-Woche, § 3 BUrlG); Teilzeit: Jahresurlaub × eigene Arbeitstage ÷ Vollzeit-Arbeitstage; Teilurlaub 1/12 pro vollem Monat (§ 5 BUrlG); +5 Tage für schwerbehinderte Menschen (§ 208 SGB IX).
+- Minijob 2026: Grenze 603 €/Monat (7.236 €/Jahr), 2027: 633 €; max. 43,4 Stunden/Monat zum Mindestlohn; Arbeitnehmer-Rentenbeitrag 3,6 % (Befreiung möglich); Arbeitgeber-Pauschalen 13 % KV, 15 % RV, 2 % Steuer plus Umlagen.
+- Teilzeit: Gehalt = Vollzeitgehalt × Teilzeitstunden ÷ Vollzeitstunden; Anspruch nach § 8 TzBfG (über 15 Beschäftigte, 6 Monate Betriebszugehörigkeit).
+
+## Arbeitstage 2026 nach Bundesland
+{laender_md}
 
 ## Weitere Seiten
 - [Über uns]({SITE}/ueber-uns/)
@@ -96,13 +107,14 @@ Rechtsgrundlagen, auf die sich die Inhalte beziehen: Arbeitszeitgesetz (ArbZG §
 - [Datenschutz]({SITE}/datenschutz/)
 """)
 
+    write("ads.txt", "google.com, pub-8301212931863478, DIRECT, f08c47fec0942fa0\n")
     write(".htaccess", """DirectoryIndex index.html index.php
 RewriteEngine On
 # HTTP->HTTPS is handled by Cloudways "Enforce HTTPS" (Nginx terminates SSL; Apache always sees HTTP, so an HTTPS-off rule here would loop)
 RewriteCond %{HTTP_HOST} ^stundenrechnen\\.com$ [NC]
 RewriteRule ^(.*)$ https://www.stundenrechnen.com/$1 [R=301,L]
 ErrorDocument 404 /404.html
-RedirectMatch 404 ^/(_build|\.git|\.github)(/|$)
+RedirectMatch 404 ^/(_build|\\.git|\\.github)(/|$)
 <IfModule mod_headers.c>
 Header set X-Content-Type-Options "nosniff"
 Header set Referrer-Policy "strict-origin-when-cross-origin"

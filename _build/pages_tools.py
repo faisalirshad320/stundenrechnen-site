@@ -11,7 +11,7 @@ rows = "".join(
     f'<td class="num" id="r{i}">–</td></tr>' for i, d in enumerate(DAYS))
 
 HOME = {
-    "path": "/", "short": "Arbeitszeitrechner", "tool": True,
+    "path": "/", "short": "Arbeitszeitrechner", "tool": True, "group": "zeit",
     "card": "Beginn, Ende und Pause eingeben – Netto-Arbeitszeit pro Tag und Woche.",
     "title": "Arbeitszeitrechner – Arbeitszeit mit Pause berechnen (kostenlos)",
     "desc": "Arbeitszeitrechner online: Arbeitsbeginn, Arbeitsende und Pause eingeben und die Netto-Arbeitszeit pro Tag und Woche in Stunden:Minuten und Dezimal berechnen. Kostenlos, ohne Anmeldung.",
@@ -65,7 +65,7 @@ document.querySelectorAll('table.t input').forEach(function(x){x.addEventListene
 
 # ---------------------------------------------------------------- Stundenrechner
 STUNDEN = {
-    "path": "/stundenrechner/", "short": "Stundenrechner", "tool": True,
+    "path": "/stundenrechner/", "short": "Stundenrechner", "tool": True, "group": "zeit",
     "card": "Stunden und Minuten addieren oder subtrahieren – Summe in h:mm und dezimal.",
     "title": "Stundenrechner – Stunden und Minuten addieren & zusammenrechnen",
     "desc": "Stundenrechner online: Stunden und Minuten addieren, subtrahieren und zusammenrechnen. Ergebnis in Stunden:Minuten und Dezimalstunden. Ideal für Stundenzettel und Arbeitszeiten.",
@@ -119,7 +119,7 @@ function c2(){var a=tmin(document.getElementById('a').value),b=tmin(document.get
 
 # ---------------------------------------------------------------- Zeitrechner
 ZEIT = {
-    "path": "/zeitrechner/", "short": "Zeitrechner", "tool": True,
+    "path": "/zeitrechner/", "short": "Zeitrechner", "tool": True, "group": "zeit",
     "card": "Zeitspanne zwischen zwei Uhrzeiten – auch über Mitternacht – und Uhrzeit plus/minus Dauer.",
     "title": "Zeitrechner – Zeitspanne zwischen zwei Uhrzeiten berechnen",
     "desc": "Zeitrechner online: Zeit von–bis berechnen, Stunden und Minuten zwischen zwei Uhrzeiten ermitteln (auch über Mitternacht) und zu einer Uhrzeit eine Dauer addieren oder abziehen.",
@@ -161,7 +161,7 @@ function c2(){var u=tmin(document.getElementById('u').value);if(u===null)return;
 
 # ---------------------------------------------------------------- Tagerechner
 TAGE = {
-    "path": "/tagerechner/", "short": "Tagerechner", "tool": True,
+    "path": "/tagerechner/", "short": "Tagerechner", "tool": True, "group": "kal",
     "card": "Tage zwischen zwei Daten zählen, Werktage ermitteln, Datum plus/minus Tage.",
     "title": "Tagerechner – Tage zwischen zwei Daten berechnen (inkl. Werktage)",
     "desc": "Tagerechner online: Anzahl der Tage zwischen zwei Daten zählen, Werktage (Mo–Fr) berechnen und ein Datum plus oder minus X Tage ermitteln. Kostenlos und ohne Anmeldung.",
@@ -184,7 +184,7 @@ TAGE = {
 <h2>Tage zählen: Differenz oder inklusive?</h2>
 <p>Zwischen dem 1. und dem 10. März liegen 9 Tage Differenz – zählt man beide Tage mit, sind es 10 Tage. Welche Variante richtig ist, hängt vom Zweck ab: Für Fristen zählt meist die Differenz (der Tag des Ereignisses selbst zählt nicht mit, § 187 BGB), für Urlaubs- oder Krankheitstage werden Anfangs- und Endtag mitgezählt. Der Rechner bietet beide Optionen.</p>
 <h2>Werktage und Arbeitstage</h2>
-<p>Der Tagerechner zählt Werktage als Montag bis Freitag. Juristisch sind Werktage allerdings Montag bis Samstag; die Arbeitstage Mo–Fr werden in der Praxis trotzdem meist so bezeichnet. Feiertage unterscheiden sich je nach Bundesland (Bayern hat bis zu 13, Berlin 10) und müssen bei Bedarf von Hand abgezogen werden. Für die monatliche Arbeitszeit multiplizierst du die Arbeitstage mit den täglichen Stunden aus dem <a href="/">Arbeitszeitrechner</a>.</p>
+<p>Der Tagerechner zählt Werktage als Montag bis Freitag. Juristisch sind Werktage allerdings Montag bis Samstag; die Arbeitstage Mo–Fr werden in der Praxis trotzdem meist so bezeichnet. Feiertage unterscheiden sich je nach Bundesland (Bayern hat bis zu 13, Berlin 10). Arbeitstage inklusive Feiertagen deines Bundeslands zählt der Rechner unter <a href="/arbeitstage-2026/">Arbeitstage 2026</a>. Für die monatliche Arbeitszeit multiplizierst du die Arbeitstage mit den täglichen Stunden aus dem <a href="/">Arbeitszeitrechner</a>.</p>
 <h2>Häufige Fristen und Zeiträume</h2>
 <ul>
 <li><strong>6 Wochen Lohnfortzahlung</strong> im Krankheitsfall = 42 Kalendertage ab dem ersten Krankheitstag.</li>
@@ -210,7 +210,7 @@ function c2(){var a=document.getElementById('d3').value;if(!a)return;var A=new D
 
 # ---------------------------------------------------------------- Überstunden
 UEBER = {
-    "path": "/ueberstunden-rechner/", "short": "Überstunden-Rechner", "tool": True,
+    "path": "/ueberstunden-rechner/", "short": "Überstunden-Rechner", "tool": True, "group": "arb",
     "card": "Überstunden berechnen und Auszahlung nach Stundenlohn und Zuschlag ermitteln.",
     "title": "Überstunden-Rechner – Überstunden berechnen & Auszahlung ermitteln",
     "desc": "Überstunden-Rechner: Mehrarbeit aus Soll- und Ist-Stunden berechnen und die Auszahlung der Überstunden mit Stundenlohn und Zuschlag (25 %, 50 %) ermitteln. Kostenlos online.",
@@ -251,7 +251,7 @@ if(g>0&&soll>0){var sl=g/(soll*4.33),sz=sl*(1+z/100);document.getElementById('sl
 
 # ---------------------------------------------------------------- Pausenrechner
 PAUSE = {
-    "path": "/pausenrechner/", "short": "Pausenrechner", "tool": True,
+    "path": "/pausenrechner/", "short": "Pausenrechner", "tool": True, "group": "zeit",
     "card": "Gesetzliche Mindestpause nach § 4 ArbZG und Netto-Arbeitszeit berechnen.",
     "title": "Pausenrechner – gesetzliche Pause bei 6, 8 oder 10 Stunden Arbeit",
     "desc": "Pausenrechner nach § 4 Arbeitszeitgesetz: Wie viel Pause steht mir bei 6, 8, 9 oder 10 Stunden Arbeit zu? Arbeitsbeginn und -ende eingeben, Mindestpause und Netto-Arbeitszeit berechnen.",
@@ -298,7 +298,7 @@ dez_rows = "".join(
     f'<tr><td>{m}</td><td class="num">{str(round(m/60,2)).replace(".",",")}</td><td>{m+30}</td><td class="num">{str(round((m+30)/60,2)).replace(".",",")}</td></tr>'
     for m in range(0, 30, 1))
 DEZ = {
-    "path": "/dezimal-rechner/", "short": "Dezimal-Rechner", "tool": True,
+    "path": "/dezimal-rechner/", "short": "Dezimal-Rechner", "tool": True, "group": "zeit",
     "card": "Stunden:Minuten in Dezimalstunden umrechnen und zurück – mit Industrieminuten-Tabelle.",
     "title": "Stunden in Dezimal umrechnen – Dezimal-Rechner & Industrieminuten-Tabelle",
     "desc": "Stunden und Minuten in Dezimalstunden umrechnen (und zurück): 7:45 = 7,75. Dezimal-Rechner mit Umrechnungstabelle für Industrieminuten – für Zeiterfassung und Lohnabrechnung.",
@@ -342,7 +342,7 @@ function c2(){var d=parseFloat(document.getElementById('d').value)||0,t=Math.rou
 
 # ---------------------------------------------------------------- MwSt
 MWST = {
-    "path": "/mwst-rechner/", "short": "MwSt-Rechner", "tool": True,
+    "path": "/mwst-rechner/", "short": "MwSt-Rechner", "tool": True, "group": "geld",
     "card": "Mehrwertsteuer berechnen: Netto ↔ Brutto bei 19 % und 7 %.",
     "title": "MwSt-Rechner – Mehrwertsteuer berechnen (19 % & 7 %, Netto ↔ Brutto)",
     "desc": "MwSt-Rechner: Mehrwertsteuer aus Netto oder Brutto berechnen – 19 %, 7 % oder eigener Satz. Netto zu Brutto, Brutto zu Netto und Steuerbetrag in einem Schritt. Kostenlos online.",
@@ -386,11 +386,11 @@ document.getElementById('t').textContent=k==='n'?eur(b):eur(n);document.getEleme
 
 # ---------------------------------------------------------------- Stundenlohn
 LOHN = {
-    "path": "/stundenlohnrechner/", "short": "Stundenlohnrechner", "tool": True,
+    "path": "/stundenlohnrechner/", "short": "Stundenlohnrechner", "tool": True, "group": "arb",
     "card": "Stundenlohn aus Monatsgehalt berechnen – oder Monatslohn aus Stundenlohn.",
-    "title": "Stundenlohnrechner – Stundenlohn aus Monatsgehalt berechnen",
-    "desc": "Stundenlohnrechner: Brutto-Stundenlohn aus Monatsgehalt und Wochenstunden berechnen oder Monatslohn aus Stundenlohn ermitteln. Mit Mindestlohn 2026 und Minijob-Grenze.",
-    "h1": "Stundenlohnrechner – Stundenlohn und Monatslohn umrechnen",
+    "title": "Stundenlohn berechnen – Stundenlohnrechner 2026 (brutto)",
+    "desc": "Stundenlohn berechnen: Brutto-Stundenlohn aus Monatsgehalt und Wochenstunden berechnen oder Monatslohn aus Stundenlohn ermitteln. Mit Mindestlohn 2026 und Minijob-Grenze.",
+    "h1": "Stundenlohn berechnen – Stundenlohnrechner",
     "lead": "Was verdienst du pro Stunde? Monatsgehalt und Wochenstunden eingeben – oder umgekehrt aus Stundenlohn und Stunden den Monatslohn berechnen.",
     "body": f"""
 <div class="calc">
@@ -409,7 +409,7 @@ LOHN = {
 <h2>So wird der Stundenlohn berechnet</h2>
 <p>Die gängige Formel lautet: <strong>Stundenlohn = Monatsgehalt ÷ (Wochenstunden × 4,33)</strong>. Der Faktor 4,33 ist die durchschnittliche Zahl der Wochen pro Monat (52 ÷ 12 = 4,333). Bei 3.200 € und 40 Stunden ergibt das 3.200 ÷ 173,33 = 18,46 € brutto pro Stunde. Manche Tarifverträge verwenden den Faktor 4,35 oder rechnen mit 4,348 Wochen – die Abweichung liegt im Cent-Bereich.</p>
 <h2>Mindestlohn und Minijob</h2>
-<p>Der gesetzliche Mindestlohn beträgt seit dem 1. Januar 2026 <strong>13,90 € brutto pro Stunde</strong> (2027: 14,60 €). Die Minijob-Grenze ist an den Mindestlohn gekoppelt und liegt 2026 bei <strong>603 € pro Monat</strong> – das entspricht etwa 10 Wochenstunden zum Mindestlohn. Wer mehr verdient, rutscht in den Übergangsbereich (Midijob) mit reduzierten Sozialabgaben bis 2.000 €.</p>
+<p>Der gesetzliche Mindestlohn beträgt seit dem 1. Januar 2026 <strong>13,90 € brutto pro Stunde</strong> (2027: 14,60 €). Die Minijob-Grenze ist an den Mindestlohn gekoppelt und liegt 2026 bei <strong>603 € pro Monat</strong> – das entspricht etwa 10 Wochenstunden zum Mindestlohn. Wer mehr verdient, rutscht in den Übergangsbereich (Midijob) mit reduzierten Sozialabgaben bis 2.000 €. Details und Netto rechnet der <a href="/minijob-rechner/">Minijob-Rechner</a>.</p>
 <h2>Brutto ist nicht netto</h2>
 <p>Alle Werte hier sind Bruttobeträge. Vom Bruttolohn gehen Lohnsteuer, Solidaritätszuschlag (meist entfallen), gegebenenfalls Kirchensteuer und die Sozialversicherungsbeiträge (rund 20–21 % Arbeitnehmeranteil) ab. Der Nettolohn liegt je nach Steuerklasse bei etwa 60–75 % des Brutto.</p>
 <p>Mehrarbeit bewertest du mit dem <a href="/ueberstunden-rechner/">Überstunden-Rechner</a>, die tatsächlich geleisteten Stunden erfasst der <a href="/">Arbeitszeitrechner</a>.</p>
