@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-AD = '<div class="ad"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8301212931863478" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>'
+AD = ''  # AdSense Auto Ads (head script) places ads; no manual units
 
 DAYS = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
 
