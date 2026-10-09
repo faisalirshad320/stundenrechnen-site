@@ -1,9 +1,10 @@
 name: Deploy to Cloudways
 
 # Auto-deploys the site to Cloudways on every push to main.
-# Requires two GitHub repo secrets (Settings -> Secrets and variables -> Actions):
-#   CLOUDWAYS_EMAIL   - your Cloudways account email
-#   CLOUDWAYS_API_KEY - the API key from Cloudways -> Account -> API Integration
+# Requires a GitHub repo secret (Settings -> Secrets and variables -> Actions):
+#   CLOUDWAYS_API_KEY - a Cloudways Access Token (unified.cloudways.com -> API -> Create Access Token).
+#                       The legacy account API key also works until Cloudways retires it (Oct 2026).
+#   CLOUDWAYS_EMAIL   - optional; only needed with the legacy API key (OAuth exchange).
 # Server/app IDs are not secret and are set below.
 
 on:
@@ -25,14 +26,17 @@ jobs:
         id: token
         run: |
           set -e
-          if [ -z "$CW_EMAIL" ] || [ -z "$CW_API_KEY" ]; then
-            echo "::error::CLOUDWAYS_EMAIL and CLOUDWAYS_API_KEY secrets are not set."
+          if [ -z "$CW_API_KEY" ]; then
+            echo "::error::CLOUDWAYS_API_KEY secret is not set."
             exit 1
           fi
-          RESP=$(curl -s -X POST https://api.cloudways.com/api/v1/oauth/access_token -d "email=$CW_EMAIL" -d "api_key=$CW_API_KEY" || true)
-          BEARER=$(printf '%s' "$RESP" | grep -o '"access_token"[^,}]*' | head -1 | sed 's/.*"access_token"[^"]*"//; s/"$//')
+          BEARER=""
+          if [ -n "$CW_EMAIL" ]; then
+            RESP=$(curl -s -X POST https://api.cloudways.com/api/v1/oauth/access_token -d "email=$CW_EMAIL" -d "api_key=$CW_API_KEY" || true)
+            BEARER=$(printf '%s' "$RESP" | grep -o '"access_token"[^,}]*' | head -1 | sed 's/.*"access_token"[^"]*"//; s/"$//')
+          fi
           if [ -z "$BEARER" ]; then
-            echo "OAuth exchange returned no access_token; using the secret directly as the bearer token."
+            echo "Using the secret directly as the bearer token (Cloudways Access Token)."
             BEARER="$CW_API_KEY"
           fi
           echo "::add-mask::$BEARER"
@@ -41,9 +45,9 @@ jobs:
       - name: Trigger Git pull (deploy) on Cloudways
         run: |
           set -e
-          RESP=$(curl -s -X POST https://api.cloudways.com/api/v1/git/pull -H "Authorization: Bearer ${{ steps.token.outputs.token }}" -d "server_id=$CW_SERVER_ID" -d "app_id=$CW_APP_ID" -d "branch_name=$CW_BRANCH")
-          echo "Git pull response: $RESP"
-          echo "$RESP" | grep -qi 'error\|invalid\|unauth' && { echo "::error::Cloudways git pull failed"; exit 1; } || true
+          CODE=$(curl -s -o /tmp/pull.json -w '%{http_code}' -X POST https://api.cloudways.com/api/v1/git/pull -H "Authorization: Bearer ${{ steps.token.outputs.token }}" -H "Accept: application/json" -d "server_id=$CW_SERVER_ID" -d "app_id=$CW_APP_ID" -d "branch_name=$CW_BRANCH")
+          echo "Git pull HTTP $CODE: $(cat /tmp/pull.json)"
+          if [ "$CODE" -ge 400 ] || grep -qi 'error\|invalid\|unauth' /tmp/pull.json; then echo "::error::Cloudways git pull failed"; exit 1; fi
 
       - name: Purge application cache (Varnish)
         continue-on-error: true
