@@ -15,6 +15,13 @@ Rechtsgrundlagen, auf die sich die Inhalte beziehen: Arbeitszeitgesetz (ArbZG §
 - [Dezimal-Rechner](https://www.stundenrechnen.com/dezimal-rechner/): Stunden:Minuten in Dezimalstunden umrechnen und zurück – mit Industrieminuten-Tabelle.
 - [MwSt-Rechner](https://www.stundenrechnen.com/mwst-rechner/): Mehrwertsteuer berechnen: Netto ↔ Brutto bei 19 % und 7 %.
 - [Stundenlohnrechner](https://www.stundenrechnen.com/stundenlohnrechner/): Stundenlohn aus Monatsgehalt berechnen – oder Monatslohn aus Stundenlohn.
+- [Arbeitstage 2026](https://www.stundenrechnen.com/arbeitstage-2026/): Arbeitstage 2026 pro Monat und Bundesland – mit Rechner für jeden Zeitraum.
+- [Feiertage 2026](https://www.stundenrechnen.com/feiertage-2026/): Alle gesetzlichen Feiertage 2026 mit Wochentag und Bundesländern.
+- [Brückentage 2026](https://www.stundenrechnen.com/brueckentage-2026/): Brückentage 2026: mit wenigen Urlaubstagen das Maximum an Freizeit.
+- [Urlaubsrechner](https://www.stundenrechnen.com/urlaubsrechner/): Urlaubsanspruch bei Teilzeit, Jobwechsel und unterjährigem Eintritt berechnen.
+- [Teilzeitrechner](https://www.stundenrechnen.com/teilzeitrechner/): Teilzeitgehalt, Stunden pro Tag, Teilzeitquote und Urlaubstage berechnen.
+- [Minijob-Rechner](https://www.stundenrechnen.com/minijob-rechner/): Minijob 2026: 603-€-Grenze, maximale Stunden, Abgaben und Netto.
+- [Altersrechner](https://www.stundenrechnen.com/altersrechner/): Alter exakt in Jahren, Monaten und Tagen – plus Tage bis zum Geburtstag.
 
 ## Kernfakten (Stand Oktober 2026)
 - Gesetzliche Mindestpause: 30 Minuten bei mehr als 6 Stunden, 45 Minuten bei mehr als 9 Stunden Arbeit (§ 4 ArbZG).
@@ -23,6 +30,29 @@ Rechtsgrundlagen, auf die sich die Inhalte beziehen: Arbeitszeitgesetz (ArbZG §
 - Umrechnung: Dezimalstunden = Minuten ÷ 60 (7:45 = 7,75). Monatsstunden = Wochenstunden × 4,33.
 - Mindestlohn 2026: 13,90 € brutto/Stunde (2027: 14,60 €). Minijob-Grenze 2026: 603 €/Monat.
 - Mehrwertsteuer: Regelsatz 19 %, ermäßigt 7 %. Netto = Brutto ÷ 1,19.
+- Feiertage 2026: Ostern 5. April (Karfreitag 3.4., Ostermontag 6.4.), Christi Himmelfahrt 14.5., Pfingstmontag 25.5., Fronleichnam 4.6., Buß- und Bettag (Sachsen) 18.11. Tag der Deutschen Einheit, 2. Weihnachtstag, Reformationstag und Allerheiligen fallen 2026 aufs Wochenende.
+- Arbeitstage 2026 (Mo–Fr): 252 in Baden-Württemberg und Bayern; 253 in Hessen, NRW, Rheinland-Pfalz, Saarland, Sachsen, Sachsen-Anhalt; 254 in Berlin, Brandenburg, Bremen, Hamburg, Mecklenburg-Vorpommern, Niedersachsen, Schleswig-Holstein, Thüringen.
+- Urlaub: gesetzlicher Mindesturlaub 24 Werktage (= 20 Arbeitstage bei 5-Tage-Woche, § 3 BUrlG); Teilzeit: Jahresurlaub × eigene Arbeitstage ÷ Vollzeit-Arbeitstage; Teilurlaub 1/12 pro vollem Monat (§ 5 BUrlG); +5 Tage für schwerbehinderte Menschen (§ 208 SGB IX).
+- Minijob 2026: Grenze 603 €/Monat (7.236 €/Jahr), 2027: 633 €; max. 43,4 Stunden/Monat zum Mindestlohn; Arbeitnehmer-Rentenbeitrag 3,6 % (Befreiung möglich); Arbeitgeber-Pauschalen 13 % KV, 15 % RV, 2 % Steuer plus Umlagen.
+- Teilzeit: Gehalt = Vollzeitgehalt × Teilzeitstunden ÷ Vollzeitstunden; Anspruch nach § 8 TzBfG (über 15 Beschäftigte, 6 Monate Betriebszugehörigkeit).
+
+## Arbeitstage 2026 nach Bundesland
+- [Arbeitstage 2026 Baden-Württemberg](https://www.stundenrechnen.com/arbeitstage-2026-baden-wuerttemberg/): 252 Arbeitstage
+- [Arbeitstage 2026 Bayern](https://www.stundenrechnen.com/arbeitstage-2026-bayern/): 252 Arbeitstage
+- [Arbeitstage 2026 Berlin](https://www.stundenrechnen.com/arbeitstage-2026-berlin/): 254 Arbeitstage
+- [Arbeitstage 2026 Brandenburg](https://www.stundenrechnen.com/arbeitstage-2026-brandenburg/): 254 Arbeitstage
+- [Arbeitstage 2026 Bremen](https://www.stundenrechnen.com/arbeitstage-2026-bremen/): 254 Arbeitstage
+- [Arbeitstage 2026 Hamburg](https://www.stundenrechnen.com/arbeitstage-2026-hamburg/): 254 Arbeitstage
+- [Arbeitstage 2026 Hessen](https://www.stundenrechnen.com/arbeitstage-2026-hessen/): 253 Arbeitstage
+- [Arbeitstage 2026 Mecklenburg-Vorpommern](https://www.stundenrechnen.com/arbeitstage-2026-mecklenburg-vorpommern/): 254 Arbeitstage
+- [Arbeitstage 2026 Niedersachsen](https://www.stundenrechnen.com/arbeitstage-2026-niedersachsen/): 254 Arbeitstage
+- [Arbeitstage 2026 Nordrhein-Westfalen](https://www.stundenrechnen.com/arbeitstage-2026-nrw/): 253 Arbeitstage
+- [Arbeitstage 2026 Rheinland-Pfalz](https://www.stundenrechnen.com/arbeitstage-2026-rheinland-pfalz/): 253 Arbeitstage
+- [Arbeitstage 2026 Saarland](https://www.stundenrechnen.com/arbeitstage-2026-saarland/): 253 Arbeitstage
+- [Arbeitstage 2026 Sachsen](https://www.stundenrechnen.com/arbeitstage-2026-sachsen/): 253 Arbeitstage
+- [Arbeitstage 2026 Sachsen-Anhalt](https://www.stundenrechnen.com/arbeitstage-2026-sachsen-anhalt/): 253 Arbeitstage
+- [Arbeitstage 2026 Schleswig-Holstein](https://www.stundenrechnen.com/arbeitstage-2026-schleswig-holstein/): 254 Arbeitstage
+- [Arbeitstage 2026 Thüringen](https://www.stundenrechnen.com/arbeitstage-2026-thueringen/): 254 Arbeitstage
 
 ## Weitere Seiten
 - [Über uns](https://www.stundenrechnen.com/ueber-uns/)

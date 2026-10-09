@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Teilzeitrechner – Teilzeitgehalt und Stunden berechnen (2026)</title>
+<meta name="description" content="Teilzeitrechner: Aus Vollzeitgehalt und Wochenstunden das Teilzeitgehalt brutto, den Stundenlohn, die Teilzeitquote in Prozent, die Stunden pro Tag und die Urlaubstage berechnen.">
+<link rel="canonical" href="https://www.stundenrechnen.com/teilzeitrechner/">
+<link rel="alternate" hreflang="de" href="https://www.stundenrechnen.com/teilzeitrechner/">
+<link rel="alternate" hreflang="x-default" href="https://www.stundenrechnen.com/teilzeitrechner/">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta property="og:type" content="website"><meta property="og:locale" content="de_DE"><meta property="og:site_name" content="Stundenrechnen">
+<meta property="og:title" content="Teilzeitrechner – Teilzeitgehalt und Stunden berechnen (2026)"><meta property="og:description" content="Teilzeitrechner: Aus Vollzeitgehalt und Wochenstunden das Teilzeitgehalt brutto, den Stundenlohn, die Teilzeitquote in Prozent, die Stunden pro Tag und die Urlaubstage berechnen."><meta property="og:url" content="https://www.stundenrechnen.com/teilzeitrechner/"><meta property="og:image" content="https://www.stundenrechnen.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#152029;--ink-2:#44525E;--line:#D9DEDA;--bg:#EEF1EE;--card:#FFFFFF;--green:#0B6E4F;--green-d:#08573E;--amber:#F2B632;--amber-bg:#FFF6DC;--r:10px;--max:1080px}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.6;color:var(--ink);background:var(--bg);font-variant-numeric:tabular-nums}
+a{color:var(--green-d)}a:hover{color:var(--green)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+header.top{background:var(--card);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.15rem;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.logo svg{width:30px;height:30px}
+nav.main{display:flex;gap:4px;flex-wrap:wrap}
+nav.main a{font-size:.86rem;padding:5px 8px;white-space:nowrap;border-radius:6px;text-decoration:none;color:var(--ink-2);font-weight:500}
+nav.main a:hover,nav.main a[aria-current]{background:var(--bg);color:var(--ink)}
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:6px;padding:6px 10px;font:inherit;cursor:pointer}
+@media(max-width:980px){nav.main{display:none;position:absolute;left:0;right:0;top:64px;background:var(--card);border-bottom:1px solid var(--line);padding:10px 20px 16px;flex-direction:column;z-index:20}nav.main.open{display:flex}.menu-btn{display:block}header.top{position:relative}}
+.crumbs{font-size:.85rem;color:var(--ink-2);margin:18px 0 6px}.crumbs a{color:var(--ink-2);text-decoration:none}.crumbs a:hover{text-decoration:underline}
+h1{font-size:clamp(1.7rem,3.6vw,2.5rem);line-height:1.15;letter-spacing:-.02em;margin:.2em 0 .35em;font-weight:700}
+.lead{font-size:1.1rem;color:var(--ink-2);max-width:62ch;margin:0 0 22px}
+h2{font-size:1.45rem;letter-spacing:-.01em;margin:1.8em 0 .5em;line-height:1.25}
+h3{font-size:1.1rem;margin:1.4em 0 .4em}
+p,li{max-width:72ch}
+.calc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;margin:0 0 28px;box-shadow:0 1px 0 rgba(21,32,41,.04)}
+.calc h2{margin:0 0 14px;font-size:1.15rem}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+label{display:block;font-size:.86rem;font-weight:600;color:var(--ink-2);margin-bottom:5px}
+input[type=time],input[type=number],input[type=date],input[type=text],select{width:100%;font:inherit;font-size:1.05rem;padding:10px 12px;border:1px solid #B9C1BC;border-radius:7px;background:#fff;color:var(--ink);min-height:46px}
+input:focus,select:focus,button:focus-visible{outline:3px solid rgba(11,110,79,.35);outline-offset:1px;border-color:var(--green)}
+.btn{font:inherit;font-weight:600;font-size:1rem;padding:11px 20px;border-radius:7px;border:0;background:var(--green);color:#fff;cursor:pointer;min-height:46px}
+.btn:hover{background:var(--green-d)}.btn.ghost{background:transparent;color:var(--ink-2);border:1px solid var(--line)}.btn.ghost:hover{background:var(--bg);color:var(--ink)}
+.btn.sm{padding:6px 12px;min-height:36px;font-size:.9rem}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;align-items:center}
+.result{margin-top:18px;background:var(--amber-bg);border:1px solid #F0D58A;border-radius:var(--r);padding:16px 18px}
+.result .big{font-size:clamp(2rem,5vw,2.9rem);font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.result .sub{color:var(--ink-2);font-size:.95rem;margin-top:4px}
+.result dl{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;margin:10px 0 0;font-size:.98rem}.result dt{color:var(--ink-2)}.result dd{margin:0;font-weight:600}
+.hint{font-size:.85rem;color:var(--ink-2);margin-top:8px}
+table.t{width:100%;border-collapse:collapse;font-size:.95rem;margin:12px 0}
+table.t th,table.t td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+table.t th{font-size:.82rem;color:var(--ink-2);font-weight:600}
+table.t input{min-height:40px;padding:6px 8px;font-size:.98rem}table.t td:nth-child(4) input{max-width:110px}
+table.t td.num{text-align:right;font-weight:600;white-space:nowrap}
+.rows{display:flex;flex-direction:column;gap:8px}.row{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:end}
+.tools{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));margin:14px 0 8px}
+.tool{display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;text-decoration:none;color:var(--ink)}
+.tool:hover{border-color:var(--green)}
+.tool strong{display:block;font-size:1.02rem;margin-bottom:4px}.tool span{font-size:.9rem;color:var(--ink-2)}
+.faq details{border-bottom:1px solid var(--line);padding:10px 0}.faq summary{font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}.faq summary::after{content:"+";color:var(--green);font-weight:700}.faq details[open] summary::after{content:"–"}
+.faq p{margin:8px 0 2px}
+.note{border-left:4px solid var(--amber);background:var(--card);padding:12px 16px;border-radius:0 var(--r) var(--r) 0;margin:18px 0;font-size:.97rem}
+.ad{min-height:90px;margin:24px 0;text-align:center}
+footer{margin-top:56px;border-top:1px solid var(--line);background:var(--card);padding:30px 0;font-size:.9rem;color:var(--ink-2)}
+footer .cols{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}footer a{color:var(--ink-2);text-decoration:none;display:block;padding:3px 0}footer a:hover{color:var(--ink)}
+footer strong{display:block;color:var(--ink);margin-bottom:6px}
+.cookie{position:fixed;left:12px;right:12px;bottom:12px;background:var(--ink);color:#fff;border-radius:var(--r);padding:14px 16px;display:none;gap:12px;align-items:center;flex-wrap:wrap;z-index:50;font-size:.92rem;box-shadow:0 8px 30px rgba(0,0,0,.25)}
+.cookie.show{display:flex}.cookie p{margin:0;flex:1 1 320px;max-width:none}.cookie a{color:#fff}.cookie .btn.sm{background:#fff;color:var(--ink)}.cookie .btn.ghost{background:transparent;color:#fff;border-color:#667}
+.copy-ok{color:var(--green-d);font-size:.9rem}
+@media(prefers-reduced-motion:no-preference){.result{transition:background .25s}}
+.chk{display:flex;align-items:center;gap:8px;font-weight:500;color:var(--ink);margin:0}.chk input{width:18px;height:18px}
+.formula{background:var(--card);border:1px dashed #9DB0A5;border-radius:10px;padding:12px 16px;font-weight:600;margin:12px 0}
+.sources{font-size:.9rem;color:var(--ink-2);border-top:1px solid var(--line);margin-top:28px;padding-top:12px}.sources ul{margin:.3em 0;padding-left:1.2em}
+table.sm{font-size:.85rem}table.sm th,table.sm td{padding:7px 6px}ul.cols2{columns:2 260px;column-gap:28px}ul.cols2 li{break-inside:avoid}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -6px}.ds{display:none}@media(max-width:600px){.row{grid-template-columns:1fr 1fr auto}.calc{padding:14px}.dl{display:none}.ds{display:inline;font-weight:600}table.t th,table.t td{padding:7px 5px}table.t input{padding:6px 4px;font-size:.95rem}table.t td:nth-child(4) input{max-width:64px}table.t td.num{font-size:.85rem}}
+</style>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
+try{if(localStorage.getItem('cc')==='all'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'})}}catch(e){}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8301212931863478" crossorigin="anonymous"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://www.stundenrechnen.com/#website", "url": "https://www.stundenrechnen.com/", "name": "Stundenrechnen", "inLanguage": "de-DE", "publisher": {"@id": "https://www.stundenrechnen.com/#org"}}, {"@type": "Organization", "@id": "https://www.stundenrechnen.com/#org", "name": "Stundenrechnen", "url": "https://www.stundenrechnen.com/", "logo": {"@type": "ImageObject", "url": "https://www.stundenrechnen.com/assets/logo.png"}}, {"@type": "WebPage", "@id": "https://www.stundenrechnen.com/teilzeitrechner/#webpage", "url": "https://www.stundenrechnen.com/teilzeitrechner/", "name": "Teilzeitrechner – Teilzeitgehalt und Stunden berechnen (2026)", "description": "Teilzeitrechner: Aus Vollzeitgehalt und Wochenstunden das Teilzeitgehalt brutto, den Stundenlohn, die Teilzeitquote in Prozent, die Stunden pro Tag und die Urlaubstage berechnen.", "inLanguage": "de-DE", "isPartOf": {"@id": "https://www.stundenrechnen.com/#website"}, "datePublished": "2026-10-10", "dateModified": "2026-10-10", "primaryImageOfPage": {"@type": "ImageObject", "url": "https://www.stundenrechnen.com/assets/og.png"}}, {"@type": "WebApplication", "@id": "https://www.stundenrechnen.com/teilzeitrechner/#app", "name": "Teilzeitrechner: Gehalt, Stunden und Urlaub bei Teilzeit", "url": "https://www.stundenrechnen.com/teilzeitrechner/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web", "browserRequirements": "Requires JavaScript", "inLanguage": "de-DE", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "description": "Teilzeitrechner: Aus Vollzeitgehalt und Wochenstunden das Teilzeitgehalt brutto, den Stundenlohn, die Teilzeitquote in Prozent, die Stunden pro Tag und die Urlaubstage berechnen.", "isAccessibleForFree": true}, {"@type": "BreadcrumbList", "@id": "https://www.stundenrechnen.com/teilzeitrechner/#crumbs", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": "https://www.stundenrechnen.com/"}, {"@type": "ListItem", "position": 2, "name": "Teilzeitrechner", "item": "https://www.stundenrechnen.com/teilzeitrechner/"}]}, {"@type": "FAQPage", "@id": "https://www.stundenrechnen.com/teilzeitrechner/#faq", "mainEntity": [{"@type": "Question", "name": "Wie berechne ich mein Teilzeitgehalt?", "acceptedAnswer": {"@type": "Answer", "text": "Vollzeitgehalt × Teilzeitstunden ÷ Vollzeitstunden. Bei 4.000 € und 30 von 40 Stunden: 4.000 × 30 ÷ 40 = 3.000 € brutto."}}, {"@type": "Question", "name": "Wie viel Prozent sind 30 Stunden bei 40 Stunden Vollzeit?", "acceptedAnswer": {"@type": "Answer", "text": "75 %. 20 Stunden sind 50 %, 25 Stunden 62,5 %, 32 Stunden 80 %."}}, {"@type": "Question", "name": "Bekomme ich bei Teilzeit weniger Urlaub?", "acceptedAnswer": {"@type": "Answer", "text": "Nur wenn du an weniger Tagen pro Woche arbeitest. Bei gleich vielen Arbeitstagen (z. B. 5 kürzere Tage) bleibt der Urlaubsanspruch in Tagen gleich."}}, {"@type": "Question", "name": "Wann habe ich Anspruch auf Teilzeit?", "acceptedAnswer": {"@type": "Answer", "text": "Nach 6 Monaten im Betrieb, wenn der Arbeitgeber regelmäßig mehr als 15 Arbeitnehmer beschäftigt (§ 8 TzBfG). Der Antrag muss 3 Monate vor Beginn gestellt werden."}}]}]}</script>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="logo" href="/"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="#0B6E4F"/><circle cx="16" cy="16" r="11" fill="#fff"/><path d="M16 8v8l5.5 3.5" stroke="#152029" stroke-width="2.4" stroke-linecap="round" fill="none"/><circle cx="16" cy="16" r="1.6" fill="#F2B632"/></svg>Stundenrechnen</a><button class="menu-btn" id="mb" aria-expanded="false" aria-controls="nav">Menü</button><nav class="main" id="nav" aria-label="Rechner"><a href="/">Arbeitszeitrechner</a><a href="/stundenrechner/">Stundenrechner</a><a href="/zeitrechner/">Zeitrechner</a><a href="/tagerechner/">Tagerechner</a><a href="/ueberstunden-rechner/">Überstunden</a><a href="/arbeitstage-2026/">Arbeitstage 2026</a><a href="/feiertage-2026/">Feiertage</a><a href="/urlaubsrechner/">Urlaub</a><a href="/stundenlohnrechner/">Stundenlohn</a></nav></div></header>
+<main class="wrap">
+<nav class="crumbs" aria-label="Brotkrumen"><a href="/">Start</a> › Teilzeitrechner</nav>
+<h1>Teilzeitrechner: Gehalt, Stunden und Urlaub bei Teilzeit</h1>
+<p class="lead">Wie viel verdienst du bei 20, 25 oder 30 Stunden? Gib Vollzeitgehalt und -stunden ein, dann deine gewünschten Teilzeitstunden. Der Rechner zeigt Bruttogehalt, Teilzeitquote, tägliche Arbeitszeit und Urlaubsanspruch.</p>
+
+<div class="calc">
+<h2>Teilzeit berechnen</h2>
+<div class="grid"><div><label for="vg">Vollzeitgehalt brutto (€/Monat)</label><input type="number" id="vg" value="3800" step="50" min="0"></div><div><label for="vs">Vollzeit Stunden/Woche</label><input type="number" id="vs" value="40" step="0.5" min="1"></div><div><label for="ts">Teilzeit Stunden/Woche</label><input type="number" id="ts" value="25" step="0.5" min="0"></div></div>
+<div class="grid" style="margin-top:12px"><div><label for="td_">Arbeitstage/Woche (Teilzeit)</label><input type="number" id="td_" value="5" step="0.5" min="0.5" max="6"></div><div><label for="vu">Urlaub Vollzeit (Tage, 5-Tage-Woche)</label><input type="number" id="vu" value="30" min="0"></div></div>
+<div class="result" id="res" aria-live="polite"><div class="big" id="t">–</div><div class="sub">Teilzeitgehalt brutto pro Monat</div>
+<dl><dt>Teilzeitquote</dt><dd id="q">–</dd><dt>Stundenlohn brutto</dt><dd id="sl">–</dd><dt>Stunden pro Arbeitstag</dt><dd id="hd">–</dd><dt>Stunden pro Monat</dt><dd id="hm">–</dd><dt>Urlaubstage</dt><dd id="u">–</dd><dt>Jahresgehalt brutto</dt><dd id="jg">–</dd></dl>
+<div class="actions"><button class="btn sm ghost" type="button" onclick="copyRes('res',this)">Ergebnis kopieren</button></div></div>
+<p class="hint">Bruttowerte. Durch den progressiven Steuertarif sinkt das Netto bei Teilzeit meist weniger stark als das Brutto. Liegt das Gehalt zwischen 603,01 € und 2.000 €, gelten die reduzierten Arbeitnehmerbeiträge im Übergangsbereich (Midijob).</p>
+</div>
+<h2>Formeln</h2>
+<div class="formula">Teilzeitgehalt = Vollzeitgehalt × Teilzeitstunden ÷ Vollzeitstunden &nbsp;·&nbsp; Urlaub = Vollzeiturlaub × Arbeitstage ÷ 5</div>
+<p>Beispiel: 3.800 € bei 40 Stunden, Teilzeit mit 25 Stunden an 5 Tagen: 3.800 × 25 ÷ 40 = <strong>2.375 € brutto</strong> (62,5 %), 5 Stunden pro Tag, weiterhin 30 Urlaubstage. Wer die 25 Stunden auf 3 Tage verteilt, arbeitet 8,33 Stunden pro Tag und hat 18 Urlaubstage – die Zahl der freien Wochen bleibt gleich.</p>
+<h2>Anspruch auf Teilzeit</h2>
+<ul>
+<li><strong>Allgemeiner Teilzeitanspruch</strong> (§ 8 TzBfG): nach 6 Monaten Beschäftigung in Betrieben mit mehr als 15 Beschäftigten; Antrag spätestens 3 Monate vor Beginn in Textform.</li>
+<li><strong>Brückenteilzeit</strong> (§ 9a TzBfG): befristet für 1 bis 5 Jahre mit Rückkehrrecht in Vollzeit, in Betrieben mit mehr als 45 Beschäftigten.</li>
+<li><strong>Elternzeit</strong>: Teilzeit von 15 bis 32 Wochenstunden (§ 15 BEEG).</li>
+<li><strong>Diskriminierungsverbot:</strong> Teilzeitkräfte dürfen nicht schlechter behandelt werden; Lohn und Sonderzahlungen stehen ihnen anteilig zu (§ 4 TzBfG).</li>
+</ul>
+<p>Den genauen Urlaubsanspruch bei Eintritt im Laufe des Jahres liefert der <a href="/urlaubsrechner/">Urlaubsrechner</a>, den Stundenlohn der <a href="/stundenlohnrechner/">Stundenlohnrechner</a>. Für Jobs bis 603 € siehe den <a href="/minijob-rechner/">Minijob-Rechner</a>.</p>
+
+<section class="faq"><h2>Häufige Fragen</h2><details><summary>Wie berechne ich mein Teilzeitgehalt?</summary><p>Vollzeitgehalt × Teilzeitstunden ÷ Vollzeitstunden. Bei 4.000 € und 30 von 40 Stunden: 4.000 × 30 ÷ 40 = 3.000 € brutto.</p></details><details><summary>Wie viel Prozent sind 30 Stunden bei 40 Stunden Vollzeit?</summary><p>75 %. 20 Stunden sind 50 %, 25 Stunden 62,5 %, 32 Stunden 80 %.</p></details><details><summary>Bekomme ich bei Teilzeit weniger Urlaub?</summary><p>Nur wenn du an weniger Tagen pro Woche arbeitest. Bei gleich vielen Arbeitstagen (z. B. 5 kürzere Tage) bleibt der Urlaubsanspruch in Tagen gleich.</p></details><details><summary>Wann habe ich Anspruch auf Teilzeit?</summary><p>Nach 6 Monaten im Betrieb, wenn der Arbeitgeber regelmäßig mehr als 15 Arbeitnehmer beschäftigt (§ 8 TzBfG). Der Antrag muss 3 Monate vor Beginn gestellt werden.</p></details></section>
+<section class="sources"><strong>Rechtsgrundlagen und Quellen</strong><ul><li><a href="https://www.gesetze-im-internet.de/tzbfg/" rel="noopener" target="_blank">Teilzeit- und Befristungsgesetz (TzBfG)</a></li><li><a href="https://www.gesetze-im-internet.de/burlg/" rel="noopener" target="_blank">Bundesurlaubsgesetz (BUrlG)</a></li></ul>Stand: 10. Oktober 2026. Alle Angaben ohne Gewähr; Tarif- und Arbeitsverträge können abweichende Regelungen enthalten.</section>
+<section><h2>Weitere Rechner</h2><div class="tools"><a class="tool" href="/ueberstunden-rechner/"><strong>Überstunden-Rechner</strong><span>Überstunden berechnen und Auszahlung nach Stundenlohn und Zuschlag ermitteln.</span></a><a class="tool" href="/stundenlohnrechner/"><strong>Stundenlohnrechner</strong><span>Stundenlohn aus Monatsgehalt berechnen – oder Monatslohn aus Stundenlohn.</span></a><a class="tool" href="/urlaubsrechner/"><strong>Urlaubsrechner</strong><span>Urlaubsanspruch bei Teilzeit, Jobwechsel und unterjährigem Eintritt berechnen.</span></a><a class="tool" href="/minijob-rechner/"><strong>Minijob-Rechner</strong><span>Minijob 2026: 603-€-Grenze, maximale Stunden, Abgaben und Netto.</span></a><a class="tool" href="/"><strong>Arbeitszeitrechner</strong><span>Beginn, Ende und Pause eingeben – Netto-Arbeitszeit pro Tag und Woche.</span></a><a class="tool" href="/stundenrechner/"><strong>Stundenrechner</strong><span>Stunden und Minuten addieren oder subtrahieren – Summe in h:mm und dezimal.</span></a><a class="tool" href="/zeitrechner/"><strong>Zeitrechner</strong><span>Zeitspanne zwischen zwei Uhrzeiten – auch über Mitternacht – und Uhrzeit plus/minus Dauer.</span></a><a class="tool" href="/tagerechner/"><strong>Tagerechner</strong><span>Tage zwischen zwei Daten zählen, Werktage ermitteln, Datum plus/minus Tage.</span></a><a class="tool" href="/pausenrechner/"><strong>Pausenrechner</strong><span>Gesetzliche Mindestpause nach § 4 ArbZG und Netto-Arbeitszeit berechnen.</span></a></div></section>
+</main>
+<footer><div class="wrap"><div class="cols">
+<div><strong>Stundenrechnen</strong>Kostenlose Online-Rechner für Arbeitszeit, Stunden, Tage und Mehrwertsteuer. Alle Berechnungen laufen direkt im Browser – es werden keine Eingaben gespeichert oder übertragen.</div>
+<div><strong>Rechner</strong><a href="/">Arbeitszeitrechner</a><a href="/stundenrechner/">Stundenrechner</a><a href="/zeitrechner/">Zeitrechner</a><a href="/tagerechner/">Tagerechner</a><a href="/ueberstunden-rechner/">Überstunden-Rechner</a></div>
+<div><strong>Mehr</strong><a href="/pausenrechner/">Pausenrechner</a><a href="/dezimal-rechner/">Dezimal-Rechner</a><a href="/mwst-rechner/">MwSt-Rechner</a><a href="/stundenlohnrechner/">Stundenlohnrechner</a><a href="/altersrechner/">Altersrechner</a></div>
+<div><strong>Arbeit &amp; Urlaub</strong><a href="/arbeitstage-2026/">Arbeitstage 2026</a><a href="/feiertage-2026/">Feiertage 2026</a><a href="/brueckentage-2026/">Brückentage 2026</a><a href="/urlaubsrechner/">Urlaubsrechner</a><a href="/teilzeitrechner/">Teilzeitrechner</a><a href="/minijob-rechner/">Minijob-Rechner</a></div>
+<div><strong>Rechtliches</strong><a href="/ueber-uns/">Über uns</a><a href="/kontakt/">Kontakt</a><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a></div>
+</div><p style="margin:22px 0 0;max-width:none">© 2026 Stundenrechnen · Angaben ohne Gewähr. Die Rechner ersetzen keine Rechts- oder Steuerberatung.</p></div></footer>
+<div class="cookie" id="cb" role="dialog" aria-label="Cookie-Hinweis"><p>Wir nutzen Cookies für Werbung (Google AdSense). Mit „Alle akzeptieren“ erlaubst du personalisierte Anzeigen. Details in der <a href="/datenschutz/">Datenschutzerklärung</a>.</p><button class="btn sm ghost" id="cc-min">Nur notwendige</button><button class="btn sm" id="cc-all">Alle akzeptieren</button></div>
+<script>
+(function(){
+var b=document.getElementById('cb');try{if(!localStorage.getItem('cc')){b.classList.add('show')}}catch(e){b.classList.add('show')}
+function set(v){try{localStorage.setItem('cc',v)}catch(e){}b.classList.remove('show');if(v==='all'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'})}}
+document.getElementById('cc-all').onclick=function(){set('all')};document.getElementById('cc-min').onclick=function(){set('min')};
+var m=document.getElementById('mb');if(m){m.onclick=function(){var n=document.getElementById('nav');n.classList.toggle('open');m.setAttribute('aria-expanded',n.classList.contains('open'))}}
+})();
+function pad(n){return (n<10?'0':'')+n}
+function fmtHM(mins){var s=mins<0?'-':'';mins=Math.abs(Math.round(mins));return s+Math.floor(mins/60)+':'+pad(mins%60)}
+function fmtDec(mins){return (Math.round(mins/60*100)/100).toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2})}
+function eur(x){return x.toLocaleString('de-DE',{style:'currency',currency:'EUR'})}
+function tmin(v){if(!v)return null;var p=v.split(':');return parseInt(p[0],10)*60+parseInt(p[1],10)}
+function copyRes(id,btn){var t=document.getElementById(id).innerText.replace(/\s+/g,' ').trim();navigator.clipboard&&navigator.clipboard.writeText(t).then(function(){btn.textContent='Kopiert ✓';setTimeout(function(){btn.textContent='Ergebnis kopieren'},1500)})}
+
+(function(){function n(id){return parseFloat(String(document.getElementById(id).value).replace(',','.'))||0}
+function c(){var vg=n('vg'),vs=n('vs'),ts=n('ts'),td=n('td_'),vu=n('vu'),q=vs?ts/vs:0,g=vg*q,hm=ts*52/12;
+document.getElementById('t').textContent=eur(g);document.getElementById('q').textContent=(q*100).toLocaleString('de-DE',{maximumFractionDigits:1})+' %';document.getElementById('sl').textContent=eur(hm?g/hm:0);
+document.getElementById('hd').textContent=td?fmtHM(ts/td*60)+' h ('+(ts/td).toLocaleString('de-DE',{maximumFractionDigits:2})+')':'–';document.getElementById('hm').textContent=hm.toLocaleString('de-DE',{maximumFractionDigits:1})+' h';
+document.getElementById('u').textContent=(Math.round(vu*td/5*10)/10).toLocaleString('de-DE')+' Tage';document.getElementById('jg').textContent=eur(g*12)}
+['vg','vs','ts','td_','vu'].forEach(function(i){document.getElementById(i).addEventListener('input',c)});c()})();</script>
+</body>
+</html>
