@@ -71,7 +71,7 @@ Sitemap: {SITE}/sitemap.xml
 """)
 
     tools_md = "\n".join(f"- [{p['short']}]({SITE}{p['path']}): {p['card']}" for p in TOOLS)
-    write("llms.txt", f"""# {NAME}
+    write("llms.txt", "\ufeff" + f"""# {NAME}
 
 > Kostenlose deutsche Online-Rechner rund um Arbeitszeit und Zeiterfassung: Arbeitszeit mit Pause, Stunden addieren, Zeitspannen, Tage zählen, Überstunden, gesetzliche Pausen, Dezimalstunden, Mehrwertsteuer und Stundenlohn. Alle Berechnungen laufen im Browser; keine Anmeldung.
 

@@ -35,7 +35,7 @@ DATENSCHUTZ = {
 <h2>2. Berechnungen im Browser</h2>
 <p>Alle Rechner auf dieser Website arbeiten ausschließlich lokal in deinem Browser (JavaScript). Eingaben wie Arbeitszeiten, Gehälter oder Beträge werden <strong>nicht an unseren Server übertragen und nicht gespeichert</strong>. Lediglich deine Cookie-Auswahl wird im lokalen Speicher deines Browsers (localStorage) abgelegt.</p>
 <h2>3. Hosting und Server-Logfiles</h2>
-<p>Die Website wird bei Cloudways (DigitalOcean-Infrastruktur, Rechenzentrum in der EU) gehostet. Beim Aufruf werden automatisch Server-Logfiles erfasst: IP-Adresse (gekürzt), Datum und Uhrzeit, aufgerufene Seite, Browsertyp und Betriebssystem, Referrer-URL. Diese Daten dienen der Sicherheit und dem störungsfreien Betrieb (Art. 6 Abs. 1 lit. f DSGVO) und werden nach 14 Tagen gelöscht.</p>
+<p>Die Website wird bei Cloudways Ltd. auf Infrastruktur von DigitalOcean LLC gehostet (Rechenzentrum Singapur). Für die Übermittlung in dieses Drittland stützen wir uns auf die EU-Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO). Beim Aufruf werden automatisch Server-Logfiles erfasst: IP-Adresse (gekürzt), Datum und Uhrzeit, aufgerufene Seite, Browsertyp und Betriebssystem, Referrer-URL. Diese Daten dienen der Sicherheit und dem störungsfreien Betrieb (Art. 6 Abs. 1 lit. f DSGVO) und werden nach 14 Tagen gelöscht.</p>
 <h2>4. Cookies und Einwilligung</h2>
 <p>Beim ersten Besuch erscheint ein Cookie-Banner. Technisch notwendige Speicherungen erfolgen auf Grundlage von § 25 Abs. 2 TDDDG. Werbe-Cookies von Google werden erst nach deiner Einwilligung gesetzt (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG). Du kannst deine Auswahl jederzeit ändern, indem du den lokalen Speicher deines Browsers für diese Website löschst.</p>
 <h2>5. Google AdSense</h2>
@@ -43,7 +43,7 @@ DATENSCHUTZ = {
 <h2>6. Google Fonts</h2>
 <p>Die Schriftart IBM Plex Sans wird von Google Fonts geladen. Dabei wird deine IP-Adresse an Google übermittelt. Rechtsgrundlage ist unser berechtigtes Interesse an einer einheitlichen Darstellung (Art. 6 Abs. 1 lit. f DSGVO).</p>
 <h2>7. Kontakt per E-Mail</h2>
-<p>Wenn du uns per E-Mail kontaktierst, speichern wir deine Angaben zur Bearbeitung der Anfrage (Art. 6 Abs. 1 lit. b und f DSGVO). Unser E-Mail-Dienst wird von Zoho Corporation (Rechenzentrum EU) bereitgestellt.</p>
+<p>Wenn du uns per E-Mail kontaktierst, speichern wir deine Angaben zur Bearbeitung der Anfrage (Art. 6 Abs. 1 lit. b und f DSGVO). Unser E-Mail-Dienst wird von Zoho Corporation Pvt. Ltd. bereitgestellt (Rechenzentrum USA); die Übermittlung erfolgt auf Grundlage der EU-Standardvertragsklauseln.</p>
 <h2>8. Deine Rechte</h2>
 <p>Du hast das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21). Eine erteilte Einwilligung kannst du jederzeit widerrufen. Außerdem hast du das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren.</p>
 <h2>9. Änderungen</h2>

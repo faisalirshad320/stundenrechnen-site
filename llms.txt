@@ -1,4 +1,4 @@
-# Stundenrechnen
+﻿# Stundenrechnen
 
 > Kostenlose deutsche Online-Rechner rund um Arbeitszeit und Zeiterfassung: Arbeitszeit mit Pause, Stunden addieren, Zeitspannen, Tage zählen, Überstunden, gesetzliche Pausen, Dezimalstunden, Mehrwertsteuer und Stundenlohn. Alle Berechnungen laufen im Browser; keine Anmeldung.
 
