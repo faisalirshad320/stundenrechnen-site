@@ -97,8 +97,7 @@ Rechtsgrundlagen, auf die sich die Inhalte beziehen: Arbeitszeitgesetz (ArbZG §
 """)
 
     write(".htaccess", """RewriteEngine On
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://www.stundenrechnen.com/$1 [R=301,L]
+# HTTP->HTTPS is handled by Cloudways "Enforce HTTPS" (Nginx terminates SSL; Apache always sees HTTP, so an HTTPS-off rule here would loop)
 RewriteCond %{HTTP_HOST} ^stundenrechnen\\.com$ [NC]
 RewriteRule ^(.*)$ https://www.stundenrechnen.com/$1 [R=301,L]
 ErrorDocument 404 /404.html
