@@ -107,6 +107,8 @@ Rechtsgrundlagen, auf die sich die Inhalte beziehen: Arbeitszeitgesetz (ArbZG §
 - [Datenschutz]({SITE}/datenschutz/)
 """)
 
+    INDEXNOW = "252aa7fcb7fd7008e391e6058bbba573"
+    write(f"{INDEXNOW}.txt", INDEXNOW)
     write("ads.txt", "google.com, pub-8301212931863478, DIRECT, f08c47fec0942fa0\n")
     write(".htaccess", """DirectoryIndex index.html index.php
 RewriteEngine On

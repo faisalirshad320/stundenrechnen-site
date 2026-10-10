@@ -64,3 +64,25 @@ jobs:
             if [ "$CODE" = "422" ]; then sleep 20; continue; fi
             break
           done
+
+      - name: Checkout (for IndexNow change detection)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Notify IndexNow (Bing, Yandex, Seznam, Naver) about changed pages
+        continue-on-error: true
+        run: |
+          KEY="252aa7fcb7fd7008e391e6058bbba573"; HOST="www.stundenrechnen.com"
+          CHANGED=$(git diff --name-only HEAD~1 HEAD 2>/dev/null | grep -E '(^|/)index\.html$' | sed -E 's#(^|/)index\.html$##' || true)
+          URLS=""
+          for d in $CHANGED; do URLS="$URLS\"https://$HOST/$d/\","; done
+          if git diff --name-only HEAD~1 HEAD 2>/dev/null | grep -qx 'index.html'; then URLS="$URLS\"https://$HOST/\","; fi
+          URLS=$(echo "$URLS" | sed 's#//\"#/\"#g; s/,$//')
+          if git log -1 --pretty=%B | grep -q '\[indexnow-all\]'; then
+            URLS=$(grep -o '<loc>[^<]*</loc>' sitemap.xml | sed 's#<loc>\(.*\)</loc>#"\1"#' | paste -sd, -)
+          fi
+          if [ -z "$URLS" ]; then echo "No page changes to submit."; exit 0; fi
+          BODY="{\"host\":\"$HOST\",\"key\":\"$KEY\",\"keyLocation\":\"https://$HOST/$KEY.txt\",\"urlList\":[$URLS]}"
+          echo "$BODY"
+          curl -s -o /dev/null -w "IndexNow HTTP %{http_code}\n" -X POST https://api.indexnow.org/indexnow -H "Content-Type: application/json; charset=utf-8" -d "$BODY"
