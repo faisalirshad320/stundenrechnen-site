@@ -1,6 +1,21 @@
 DirectoryIndex index.html index.php
 RewriteEngine On
 # HTTP->HTTPS is handled by Cloudways "Enforce HTTPS" (Nginx terminates SSL; Apache always sees HTTP, so an HTTPS-off rule here would loop)
+# mod_dir's DirectorySlash builds its redirect from Apache's own view of the
+# scheme. Because Nginx terminates TLS, Apache always sees plain HTTP, so
+# /stundenrechner would 301 to http://www.stundenrechnen.com/stundenrechner/ --
+# a scheme-downgrading hop Google reports as "Page with redirect". Issue the
+# trailing-slash redirect ourselves, on https, straight to the canonical host.
+Options -Indexes
+DirectorySlash Off
+RewriteCond %{REQUEST_URI} !^/(_build|\.git|\.github)(/|$)
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule ^(.+)$ https://www.stundenrechnen.com/$1/ [R=301,L]
+# With DirectorySlash off, serve /verzeichnis/ from its index.html internally.
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_FILENAME}/index.html -f
+RewriteRule ^(.*/)?$ $1index.html [L]
 RewriteCond %{HTTP_HOST} ^stundenrechnen\.com$ [NC]
 RewriteRule ^(.*)$ https://www.stundenrechnen.com/$1 [R=301,L]
 ErrorDocument 404 /404.html
