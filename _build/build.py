@@ -7,10 +7,11 @@ from pages_tools import TOOLS
 from pages_legal import LEGAL
 from pages_content import CONTENT
 from pages_calendar import CAL
+from pages_tier2 import TIER2
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIST = os.path.join(ROOT, "dist")
-ALL = TOOLS + CONTENT + CAL + LEGAL
+ALL = TOOLS + CONTENT + CAL + TIER2 + LEGAL
 
 
 def write(rel, content, binary=False):
