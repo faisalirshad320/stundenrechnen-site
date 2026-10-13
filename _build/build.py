@@ -6,10 +6,11 @@ from template import page, SITE, NAME
 from pages_tools import TOOLS
 from pages_legal import LEGAL
 from pages_content import CONTENT
+from pages_calendar import CAL
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIST = os.path.join(ROOT, "dist")
-ALL = TOOLS + CONTENT + LEGAL
+ALL = TOOLS + CONTENT + CAL + LEGAL
 
 
 def write(rel, content, binary=False):
