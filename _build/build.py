@@ -114,6 +114,12 @@ Rechtsgrundlagen, auf die sich die Inhalte beziehen: Arbeitszeitgesetz (ArbZG §
     write("ads.txt", "google.com, pub-8301212931863478, DIRECT, f08c47fec0942fa0\n")
     write(".htaccess", """DirectoryIndex index.html index.php
 RewriteEngine On
+# Host canonicalisation runs FIRST, before any path rewriting. The directory
+# rules below end with [L] on an internal rewrite, so a host redirect placed
+# after them can be skipped or fire against the already-rewritten path and
+# leak /index.html into the redirect target. Settle the host, then the path.
+RewriteCond %{HTTP_HOST} ^stundenrechnen\\.com$ [NC]
+RewriteRule ^(.*)$ https://www.stundenrechnen.com/$1 [R=301,L]
 # HTTP->HTTPS is handled by Cloudways "Enforce HTTPS" (Nginx terminates SSL; Apache always sees HTTP, so an HTTPS-off rule here would loop)
 # mod_dir's DirectorySlash builds its redirect from Apache's own view of the
 # scheme. Because Nginx terminates TLS, Apache always sees plain HTTP, so
@@ -130,8 +136,6 @@ RewriteRule ^(.+)$ https://www.stundenrechnen.com/$1/ [R=301,L]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteCond %{REQUEST_FILENAME}/index.html -f
 RewriteRule ^(.*/)?$ $1index.html [L]
-RewriteCond %{HTTP_HOST} ^stundenrechnen\\.com$ [NC]
-RewriteRule ^(.*)$ https://www.stundenrechnen.com/$1 [R=301,L]
 ErrorDocument 404 /404.html
 RedirectMatch 404 ^/(_build|\\.git|\\.github)(/|$)
 <IfModule mod_headers.c>
